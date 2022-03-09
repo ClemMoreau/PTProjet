@@ -4,5 +4,5 @@
 
 | Name Surname (initials) | GUID                                     |
 | ----------------------- | ---------------------------------------- |
-| Jean Augier             | `{51876572-A6BC-48E7-9156-70B90CEFD211}` |
-| Clément Moreau          | `{99EADB2F-20F3-416A-8910-B6D758710F16}` |
+| Jean Augier             | `{44E03982-9682-4885-BBA5-5704A9CBF2B9}` |
+| Clément Moreau          | `{B2F6A99A-FBEB-4F42-9252-48E6F9782EE4}` |
