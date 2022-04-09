@@ -20,6 +20,7 @@ namespace Task1.LibraryData
 
 		public DataContext()
         {
+			DataGenerator.generateData(this);
 			catalogDictionary = new CatalogDictionary(Catalog);
 		}
 
