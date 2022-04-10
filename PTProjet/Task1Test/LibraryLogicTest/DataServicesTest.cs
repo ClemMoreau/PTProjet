@@ -36,6 +36,7 @@ namespace Task1Test.LibraryLogicTest
             businessLogic.data.Catalog.Add(booktest.catalog);
 
             businessLogic.data.returnABook(booktest, usertest);
+            
 
             Assert.AreEqual<int>(4, booktest.catalog.nbAvailable);
 
