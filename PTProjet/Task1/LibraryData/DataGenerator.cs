@@ -21,7 +21,7 @@ namespace Task1.LibraryData
             data.Users.Add(new User("Hector", "Salamanca"));
             data.Users.Add(new User("Hank", "Schrader"));
             data.Users.Add(new User("Nacho", "Varga"));
-
+            
             // Adding book
             data.States.Add(new State("Sybil", " Benjamin Disraeli", 2));
             data.States.Add(new State("Nightmare Abbey", "Thomas Love Peacock", 1));
