@@ -19,6 +19,7 @@ namespace Task1Test.LibraryLogicTest
             User usertest = new User("Jo", "Lopez");
             
             businessLogic.data.Catalog.Add(booktest.catalog);
+            businessLogic.data.catalogDictionary.AddCatalog(booktest.catalog);
 
             businessLogic.data.borrowABook(booktest, usertest);
 
@@ -34,6 +35,7 @@ namespace Task1Test.LibraryLogicTest
             User usertest = new User("Jo", "Lopez");
 
             businessLogic.data.Catalog.Add(booktest.catalog);
+            businessLogic.data.catalogDictionary.AddCatalog(booktest.catalog);
 
             businessLogic.data.returnABook(booktest, usertest);
             
