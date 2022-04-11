@@ -41,5 +41,7 @@ namespace Task1Test.LibraryDataTest
             Assert.AreEqual<int>(2, catalog.nbAvailable);
 
         }
+
+        
     }
 }

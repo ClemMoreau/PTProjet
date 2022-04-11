@@ -27,6 +27,7 @@ namespace Task1.LibraryData
 		public void borrowABook(State book, User user)
 		{
 			Catalog catalog = catalogDictionary.findCatalog(book);
+			
 			if (catalog == null)
             {
 				Console.WriteLine("Author is not register in the library.");

@@ -23,6 +23,7 @@ namespace Task1.LibraryData
 		public Catalog findCatalog(State book)
 		{
             Catalog catalog;
+            
             bool hasValue = this.TryGetValue(book.catalog.author, out catalog);
             if (hasValue)
             {
