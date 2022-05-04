@@ -27,21 +27,20 @@
             Width="auto"
             Margin="0 0 10 0"
             HorizontalAlignment="Right"
-            Command="{Binding}"/>
+            Command="{Binding AddUserCommand}"/>
 
-        <ListView Grid.Row="1" Grid.ColumnSpan="2">
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Users}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListViewItem/>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="1" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Id}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -49,7 +48,7 @@
                     <GridViewColumn Header="Firstname">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="Clément" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Firstname}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -57,7 +56,7 @@
                     <GridViewColumn Header="Lastname">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="Moreau" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Lastname}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

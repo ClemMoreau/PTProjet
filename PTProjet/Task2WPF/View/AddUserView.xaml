@@ -27,7 +27,7 @@
 
         <TextBox
             Grid.Row="2"
-            Text=""
+            Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}"
             Width="200"
             HorizontalAlignment="Left"/>
 
@@ -37,7 +37,7 @@
 
         <TextBox
             Grid.Row="4"
-            Text=""
+            Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"
             Width="200"
             HorizontalAlignment="Left"/>
 
@@ -47,11 +47,13 @@
             <Button
                 Content="Save"
                 HorizontalAlignment="Left"
-                Margin="5 5 5 5"/>
+                Margin="5 5 5 5"
+                Command="{Binding SaveCommand}"/>
             <Button
                 Content="Cancel"
                 HorizontalAlignment="Right"
-                Margin="5 5 5 5"/>
+                Margin="5 5 5 5"
+                Command="{Binding CancelCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

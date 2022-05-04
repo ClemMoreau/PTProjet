@@ -1,5 +1,7 @@
-﻿using Task1.LibraryData;
+﻿using System.Windows.Input;
 using Task2WPF.Stores;
+using Task2WPF.Commands;
+using Task2WPF.Services;
 
 namespace Task2WPF.ViewModel
 {
@@ -7,6 +9,8 @@ namespace Task2WPF.ViewModel
     {
         private readonly NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+        public ICommand CatalogCommand { get; }
+        public ICommand UserCommand { get; }
 
         public MainViewModel(NavigationStore navigationStore)
         {
@@ -19,5 +23,6 @@ namespace Task2WPF.ViewModel
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
+
     }
 }

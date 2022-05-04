@@ -8,9 +8,26 @@
         xmlns:vm="clr-namespace:Task2WPF.ViewModel"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="auto" Width="auto">
+    <Grid Margin="10 10 10 10">
+        <!--<Grid.Resources>
+            <DataTemplate DataType="{x:Type vm:AddCatalogViewModel}">
+                <view:AddCatalogView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:CatalogListViewModel}">
+                <view:CatalogListView/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>-->
+
         <Grid.Resources>
+            <DataTemplate DataType="{x:Type vm:AddUserViewModel}">
+                <view:AddUserView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:UserListViewModel}">
+                <view:UserListView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:AddCatalogViewModel}">
                 <view:AddCatalogView/>
             </DataTemplate>
@@ -20,6 +37,52 @@
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>
+
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Manage catalogs"
+            FontSize="24"
+            FontWeight="DemiBold"
+            Margin="5 5 5 5"/>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Catalog"
+            Margin="10 10 10 10"
+            Width="auto"
+            VerticalAlignment="Top"
+            HorizontalAlignment="center"
+            Command="{Binding CatalogCommand}"/>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="Manage users"
+            FontSize="24"
+            FontWeight="DemiBold"
+            Margin="5 5 5 5"/>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Content="User"
+            Margin="10 10 10 10"
+            Width="auto"
+            VerticalAlignment="Top"
+            HorizontalAlignment="center"
+            Command="{Binding UserCommand}"/>-->
+
 
     </Grid>
 </Window>
