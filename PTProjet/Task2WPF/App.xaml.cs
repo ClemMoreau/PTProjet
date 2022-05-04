@@ -22,7 +22,7 @@ namespace Task2WPF
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = CreateUserListViewModel();
+            _navigationStore.CurrentViewModel = CreateMainPageViewModel();
 
             MainWindow = new MainWindow();
             {
@@ -40,7 +40,7 @@ namespace Task2WPF
 
         private CatalogListViewModel CreateCatalogListViewModel()
         {
-            return new CatalogListViewModel(_library, new NavigationService(_navigationStore, CreateAddCatalogViewModel));
+            return new CatalogListViewModel(_library, new NavigationService(_navigationStore, CreateAddCatalogViewModel), new NavigationService(_navigationStore, CreateMainPageViewModel));
         }
 
         private AddUserViewModel CreateAddUserViewModel()
@@ -50,7 +50,12 @@ namespace Task2WPF
 
         private UserListViewModel CreateUserListViewModel()
         {
-            return new UserListViewModel(_library, new NavigationService(_navigationStore, CreateAddUserViewModel));
+            return new UserListViewModel(_library, new NavigationService(_navigationStore, CreateAddUserViewModel), new NavigationService(_navigationStore, CreateMainPageViewModel));
+        }
+
+        private MainPageViewModel CreateMainPageViewModel()
+        {
+            return new MainPageViewModel(new NavigationService(_navigationStore, CreateCatalogListViewModel), new NavigationService(_navigationStore, CreateUserListViewModel));
         }
 
     }

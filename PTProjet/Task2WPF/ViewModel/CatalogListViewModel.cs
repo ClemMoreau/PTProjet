@@ -17,12 +17,15 @@ namespace Task2WPF.ViewModel
 
         public ICommand AddCatalogCommand { get;  }
 
-        public CatalogListViewModel(DataContext library, NavigationService addCatalogNavigationService)
+        public ICommand GoBack { get; }
+
+        public CatalogListViewModel(DataContext library, NavigationService addCatalogNavigationService, NavigationService goBackNavigationService)
         {
             _library = library;
             _catalogs = new ObservableCollection<CatalogViewModel>();
 
             AddCatalogCommand = new NavigateCommand(addCatalogNavigationService);
+            GoBack = new NavigateCommand(goBackNavigationService);
 
             UpdateCatalogs();
         }

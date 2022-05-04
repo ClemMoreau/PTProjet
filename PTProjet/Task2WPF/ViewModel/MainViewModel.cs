@@ -9,8 +9,6 @@ namespace Task2WPF.ViewModel
     {
         private readonly NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
-        public ICommand CatalogCommand { get; }
-        public ICommand UserCommand { get; }
 
         public MainViewModel(NavigationStore navigationStore)
         {

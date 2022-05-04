@@ -20,12 +20,15 @@ namespace Task2WPF.ViewModel
 
         public ICommand AddUserCommand { get; }
 
-        public UserListViewModel(DataContext library, NavigationService addUserNavigationService)
+        public ICommand GoBack { get; }
+
+        public UserListViewModel(DataContext library, NavigationService addUserNavigationService, NavigationService goBackNavigationService)
         {
             _library = library;
             _user = new ObservableCollection<UserViewModel>();
 
             AddUserCommand = new NavigateCommand(addUserNavigationService);
+            GoBack = new NavigateCommand(goBackNavigationService);
 
             UpdateUsers();
         }
