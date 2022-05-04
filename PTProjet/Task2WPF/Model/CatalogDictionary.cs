@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Task2WPF.Exceptions;
 
 namespace Task1.LibraryData
 {
@@ -12,27 +9,31 @@ namespace Task1.LibraryData
         {
             foreach (var catalog in catalogs)
             {
-                this.Add(catalog.author, catalog);
+                this.Add(catalog.Author, catalog);
             }
         }
 
 		public void AddCatalog(Catalog catalog)
         {
-			this.Add(catalog.author, catalog);
-        }
-		public Catalog findCatalog(State book)
-		{
-            Catalog catalog;
-            
-            bool hasValue = this.TryGetValue(book.catalog.author, out catalog);
-            if (hasValue)
+            Catalog? existingCatalog;
+            this.TryGetValue(catalog.Author, out existingCatalog);            
+
+            if (existingCatalog == null)
             {
-                return catalog;            
+			    this.Add(catalog.Author, catalog);
             }
             else
             {
-                return null;
+                throw new CatalogConflictException(existingCatalog, catalog);  
             }
+        }
+		public Catalog findCatalog(State book)
+		{
+            Catalog? catalog;
+            
+            this.TryGetValue(book.catalog.Author, out catalog);
+            
+            return catalog;            
         }
 	}
 }

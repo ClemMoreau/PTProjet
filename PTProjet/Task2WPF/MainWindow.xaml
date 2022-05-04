@@ -3,10 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Task2WPF" xmlns:view="clr-namespace:Task2WPF.View"
+        xmlns:local="clr-namespace:Task2WPF" 
+        xmlns:view="clr-namespace:Task2WPF.View"
+        xmlns:vm="clr-namespace:Task2WPF.ViewModel"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <view:BookManagerView/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vm:AddCatalogViewModel}">
+                <view:AddCatalogView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:CatalogListViewModel}">
+                <view:CatalogListView/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+
     </Grid>
 </Window>

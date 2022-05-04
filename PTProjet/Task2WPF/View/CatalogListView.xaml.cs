@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Task2WPF.View
 {
     /// <summary>
-    /// Logique d'interaction pour UserModelView.xaml
+    /// Logique d'interaction pour CatalogModelView.xaml
     /// </summary>
-    public partial class UserModelView : UserControl
+    public partial class CatalogListView : UserControl
     {
-        public UserModelView()
+        public CatalogListView()
         {
             InitializeComponent();
         }
-
     }
 }

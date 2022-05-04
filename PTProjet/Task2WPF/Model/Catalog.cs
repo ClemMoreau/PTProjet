@@ -8,34 +8,48 @@ namespace Task1.LibraryData
 {
 	public class Catalog
 	{
-		public string title { get; set; }
+		private static int nextId = 1;
+		public int Id { get; set; }
+		public string Title { get; set; }
 
-		public string author { get; set; }
+		public string Author { get; set; }
 
-		public int nbAvailable { get; set; }
+		public int NbAvailable { get; set; }
+
+        public Catalog()
+        {
+			this.Id = 0;
+			this.Title = "";
+			this.Author = "";
+			this.NbAvailable = 0;
+		}
 
 		public Catalog(string title, string author, int nbAvailable)
         {
-			this.title = title;
-			this.author = author;
-			this.nbAvailable = nbAvailable;
+			this.Id = nextId;
+			nextId++;
+			this.Title = title;
+			this.Author = author;
+			this.NbAvailable = nbAvailable;
         }
 
 		public Catalog(Catalog catalog)
 		{
-			this.title = catalog.title;
-			this.author = catalog.author;
-			this.nbAvailable = catalog.nbAvailable;
+			this.Id = nextId;
+			nextId++;
+			this.Title = catalog.Title;
+			this.Author = catalog.Author;
+			this.NbAvailable = catalog.NbAvailable;
 		}
 
 		public void addBook()
 		{
-			nbAvailable++;
+			NbAvailable++;
 		}
 
 		public void removeBook()
 		{
-			nbAvailable--;
+			NbAvailable--;
 		}
 	}
 }
