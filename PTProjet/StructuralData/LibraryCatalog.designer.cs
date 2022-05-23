@@ -239,6 +239,8 @@ namespace StructuralData
 		
 		private int _NbAvailable;
 		
+		private string _Title;
+		
 		private EntitySet<Event> _Event;
 		
     #region Définitions de méthodes d'extensibilité
@@ -251,6 +253,8 @@ namespace StructuralData
     partial void OnAuthorChanged();
     partial void OnNbAvailableChanging(int value);
     partial void OnNbAvailableChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
     #endregion
 		
 		public Catalog()
@@ -315,6 +319,26 @@ namespace StructuralData
 					this._NbAvailable = value;
 					this.SendPropertyChanged("NbAvailable");
 					this.OnNbAvailableChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
 				}
 			}
 		}
