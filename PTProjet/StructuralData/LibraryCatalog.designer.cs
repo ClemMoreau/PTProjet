@@ -20,8 +20,9 @@ namespace StructuralData
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
+
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name ="Library")]
 	public partial class LibraryCatalogDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -89,7 +90,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User")]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -227,7 +228,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Catalog")]
 	public partial class Catalog : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -389,7 +390,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Event")]
 	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
