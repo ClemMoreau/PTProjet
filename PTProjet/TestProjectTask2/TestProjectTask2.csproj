@@ -50,7 +50,8 @@
     <Reference Include="System.Data.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Instrumentation\Class1.cs" />
+    <Compile Include="Instrumentation\RandomGeneration.cs" />
+    <Compile Include="PresentationTest\PresentationTest.cs" />
     <Compile Include="ServicesTest\TestServiceLINQToSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
