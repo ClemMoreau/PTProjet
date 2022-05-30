@@ -45,7 +45,13 @@ namespace StructuralData
 		{
 			OnCreated();
 		}
-		
+
+		public LibraryCatalogDataContext() :
+			base(global::StructuralData.Properties.Settings.Default.StructuralDataConnectionString, mappingSource)
+        {
+			OnCreated();
+        }
+
 		public LibraryCatalogDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{

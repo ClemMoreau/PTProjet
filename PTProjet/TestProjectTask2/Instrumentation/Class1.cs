@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2Test.Instrumentation
+namespace TestProjectTask2.Instrumentation
 {
-    internal class DataGenerator
+    internal class Class1
     {
     }
 }
