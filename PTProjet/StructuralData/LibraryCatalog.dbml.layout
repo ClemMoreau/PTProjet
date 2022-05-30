@@ -14,10 +14,10 @@
         <elementListCompartment Id="a537e4d8-538a-492b-a3b4-1e6cb4a07f89" absoluteBounds="1.265, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9e3992ff-a6d0-4fa8-91d6-423674e374b7" absoluteBounds="2.625, 3.75, 2, 1.3862939453124996">
+    <classShape Id="9e3992ff-a6d0-4fa8-91d6-423674e374b7" absoluteBounds="2.625, 3.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/LibraryCatalogDataContext/Event" />
       <nestedChildShapes>
-        <elementListCompartment Id="e876a210-32ee-4fae-a239-785ca283cafd" absoluteBounds="2.64, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e876a210-32ee-4fae-a239-785ca283cafd" absoluteBounds="2.64, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.9375 : 3.20359537760417); (2.9375 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">

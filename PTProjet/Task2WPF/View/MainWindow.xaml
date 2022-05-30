@@ -8,7 +8,10 @@
         xmlns:vm="clr-namespace:Task2WPF.ViewModel"
         d:DesignHeight="100" d:DesignWidth="350"
         mc:Ignorable="d"
-        Title="MainWindow" >
+        Title="Library" Height="450" Width="800">
+    <!--<Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>-->
     <Grid Margin="10 10 10 10">
 
         <Grid.Resources>

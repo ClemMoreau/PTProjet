@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Class="LibraryCatalogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Table Name="" Member="User">
     <Type Name="User">
-      <Column Member="idUser" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Member="FirstName" Type="System.String" CanBeNull="false" />
-      <Column Member="LastName" Type="System.String" CanBeNull="false" />
+      <Column Name="idUser" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" CanBeNull="false" />
       <Association Name="User_Event" Member="Event" ThisKey="idUser" OtherKey="idUser" Type="Event" />
     </Type>
   </Table>
   <Table Name="" Member="Catalog">
     <Type Name="Catalog">
-      <Column Member="idCatalog" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Member="Author" Type="System.String" CanBeNull="false" />
-      <Column Member="NbAvailable" Type="System.Int32" CanBeNull="false" />
-      <Column Member="Title" Type="System.String" CanBeNull="false" />
+      <Column Name="idCatalog" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" CanBeNull="false" />
+      <Column Name="NbAvailable" Type="System.Int32" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" CanBeNull="false" />
       <Association Name="Catalog_Event" Member="Event" ThisKey="idCatalog" OtherKey="idCatalog" Type="Event" />
     </Type>
   </Table>
   <Table Name="" Member="Event">
     <Type Name="Event">
-      <Column Member="idEvent" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Member="idUser" Type="System.Int32" CanBeNull="false" />
-      <Column Member="idCatalog" Type="System.Int32" CanBeNull="false" />
+      <Column Name="idEvent" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idUser" Type="System.Int32" CanBeNull="false" />
+      <Column Name="idCatalog" Type="System.Int32" CanBeNull="false" />
+      <Column Member="EventType" Type="System.String" CanBeNull="false" />
       <Association Name="Catalog_Event" Member="Catalog" ThisKey="idCatalog" OtherKey="idCatalog" Type="Catalog" IsForeignKey="true" />
       <Association Name="User_Event" Member="User" ThisKey="idUser" OtherKey="idUser" Type="User" IsForeignKey="true" />
     </Type>

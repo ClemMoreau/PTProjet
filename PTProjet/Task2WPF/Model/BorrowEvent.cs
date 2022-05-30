@@ -8,7 +8,7 @@ namespace Task1.LibraryData
             typeOfEvent = "borrow";
         }
 
-        public BorrowEvent(User user, State book)
+        public BorrowEvent(User user, Catalog book)
         {
             typeOfEvent = "borrow";
             this.user = user;

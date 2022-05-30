@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1.LibraryData
 {
@@ -18,35 +16,41 @@ namespace Task1.LibraryData
 
 		public CatalogDictionary catalogDictionary { get; set; }
 
+		public Service serviceAPI { get; set; }
+
 		public DataContext()
         {
+			serviceAPI = Service.CreateService("TODO PUT STRING CONNEXION");
+
+			foreach(var catalog in serviceAPI.getCatalogs())
+            {
+				Catalog.Add(new Catalog(catalog.idCatalog, catalog.Title, catalog.Author, catalog.NbAvailable));
+            }
 			catalogDictionary = new CatalogDictionary(Catalog);
+
+			foreach(var user in serviceAPI.getUsers())
+            {
+				Users.Add(new User(user.idUser, user.FirstName, user.LastName));
+            }
 		}
 
-		public void borrowABook(State book, User user)
+		public void borrowABook(Catalog book, User user)
 		{
-			Catalog catalog = catalogDictionary.findCatalog(book);
 			
-			if (catalog == null)
+			if (book == null)
             {
 				Console.WriteLine("Author is not register in the library.");
             }
 			else
             {
-				if (catalog.NbAvailable == 0)
+				if (book.NbAvailable == 0)
                 {
 					Console.WriteLine("This book is not available for the moment.");
                 }
                 else
                 {
-					catalog.NbAvailable--;
+					book.NbAvailable--;
 					Events.Add(new BorrowEvent(user, book));
-                }
-
-				if (States.Contains(book) == false)
-                {
-					States.Add(book);
-					Catalog.Add(book.catalog);
                 }
 
 				if (Users.Contains(user) == false)
@@ -56,22 +60,20 @@ namespace Task1.LibraryData
             }
 		}
 
-		public void returnABook(State book, User user)
+		public void returnABook(Catalog book, User user)
 		{
-			Catalog catalog = catalogDictionary.findCatalog(book);
-			if (catalog == null)
+			if (book == null)
 			{
 				Console.WriteLine("Author is not register in the library.");
 			}
 			else
 			{
-				catalog.NbAvailable++;
+				book.NbAvailable++;
 				Events.Add(new ReturnEvent(user, book));
 
-				if (States.Contains(book) == false)
+				if (Catalog.Contains(book) == false)
                 {
-					States.Add(book);
-					Catalog.Add(book.catalog);
+					Catalog.Add(book);
                 }
 
 				if (Users.Contains(user) == false)

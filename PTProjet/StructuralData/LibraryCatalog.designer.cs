@@ -20,9 +20,8 @@ namespace StructuralData
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-
-
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name ="Library")]
+	
+	
 	public partial class LibraryCatalogDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -90,7 +89,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -228,7 +227,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Catalog")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
 	public partial class Catalog : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -390,7 +389,7 @@ namespace StructuralData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Event")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
 	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -401,6 +400,8 @@ namespace StructuralData
 		private int _idUser;
 		
 		private int _idCatalog;
+		
+		private string _EventType;
 		
 		private EntityRef<Catalog> _Catalog;
 		
@@ -416,6 +417,8 @@ namespace StructuralData
     partial void OnidUserChanged();
     partial void OnidCatalogChanging(int value);
     partial void OnidCatalogChanged();
+    partial void OnEventTypeChanging(string value);
+    partial void OnEventTypeChanged();
     #endregion
 		
 		public Event()
@@ -489,6 +492,26 @@ namespace StructuralData
 					this._idCatalog = value;
 					this.SendPropertyChanged("idCatalog");
 					this.OnidCatalogChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventType", CanBeNull=false)]
+		public string EventType
+		{
+			get
+			{
+				return this._EventType;
+			}
+			set
+			{
+				if ((this._EventType != value))
+				{
+					this.OnEventTypeChanging(value);
+					this.SendPropertyChanging();
+					this._EventType = value;
+					this.SendPropertyChanged("EventType");
+					this.OnEventTypeChanged();
 				}
 			}
 		}

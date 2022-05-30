@@ -8,7 +8,6 @@ namespace Task1.LibraryData
 {
     public class User
     {
-        private static int nextId = 1;
         public int Id { get; set; }
         public String firstname { get; set; }
 
@@ -21,18 +20,16 @@ namespace Task1.LibraryData
             this.lastname = "";
         }
 
-        public User(String firstname, String lastname)
+        public User(int id, String firstname, String lastname)
         {
-            this.Id = nextId;
-            nextId++;
+            this.Id = id;
             this.firstname = firstname;
             this.lastname = lastname;
         }
 
         public User(User user)
         {
-            this.Id = nextId;
-            nextId++;
+            this.Id = user.Id;
             this.firstname = user.firstname;
             this.lastname = user.lastname;
         }

@@ -43,8 +43,13 @@ namespace Services
         public abstract void addCatalog(string _title, string _author);
         public abstract bool setCatalog(int _catalogId, string _author, string _title);
         public abstract void deleteCatalog(int _catalogId);
-            
+
         #endregion
+
+        public static Service CreateService(string connectionString)
+        {
+            return new DataInteraction(connectionString);
+        }
 
     }
 

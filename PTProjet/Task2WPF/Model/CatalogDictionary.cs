@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Task2WPF.Exceptions;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Task1.LibraryData
 {
@@ -24,7 +24,7 @@ namespace Task1.LibraryData
             }
             else
             {
-                throw new CatalogConflictException(existingCatalog, catalog);  
+                throw new Exception();  
             }
         }
 		public Catalog findCatalog(State book)

@@ -8,7 +8,7 @@ namespace Task1.LibraryData
             typeOfEvent = "return";
         }
 
-        public ReturnEvent(User user, State book)
+        public ReturnEvent(User user, Catalog book)
         {
             typeOfEvent = "return";
             this.book = book;

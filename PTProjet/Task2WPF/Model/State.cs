@@ -12,7 +12,7 @@ namespace Task1.LibraryData
 
 		public State(string title, string author, int nbAvailable)
         {
-			this.catalog = new Catalog(title, author, nbAvailable);
+			this.catalog = new Catalog(0, title, author, nbAvailable);
         }
 
 		public State(Catalog catalog)

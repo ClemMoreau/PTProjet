@@ -8,7 +8,6 @@ namespace Task1.LibraryData
 {
 	public class Catalog
 	{
-		private static int nextId = 1;
 		public int Id { get; set; }
 		public string Title { get; set; }
 
@@ -24,10 +23,9 @@ namespace Task1.LibraryData
 			this.NbAvailable = 0;
 		}
 
-		public Catalog(string title, string author, int nbAvailable)
+		public Catalog(int id, string title, string author, int nbAvailable)
         {
-			this.Id = nextId;
-			nextId++;
+			this.Id =  id;
 			this.Title = title;
 			this.Author = author;
 			this.NbAvailable = nbAvailable;
@@ -35,8 +33,7 @@ namespace Task1.LibraryData
 
 		public Catalog(Catalog catalog)
 		{
-			this.Id = nextId;
-			nextId++;
+			this.Id = catalog.Id;
 			this.Title = catalog.Title;
 			this.Author = catalog.Author;
 			this.NbAvailable = catalog.NbAvailable;

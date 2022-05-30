@@ -12,6 +12,6 @@ namespace Task1.LibraryData
 
 		public User user { get; set; }
 
-		public State book { get; set; }
+		public Catalog book { get; set; }
 	}
 }

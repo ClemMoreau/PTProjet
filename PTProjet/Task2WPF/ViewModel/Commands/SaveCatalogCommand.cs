@@ -1,9 +1,11 @@
-﻿using Task1.LibraryData;
+﻿
 using Task2WPF.ViewModel;
-using Task2WPF.Exceptions;
+using System;
 using System.Windows;
 using System.ComponentModel;
 using Task2WPF.Services;
+using StructuralData;
+using Task1.LibraryData;
 
 namespace Task2WPF.Commands
 {
@@ -34,20 +36,20 @@ namespace Task2WPF.Commands
 
         public override void Execute(object? parameter)
         {
-            Catalog catalog = new Catalog(
-                _addCatalogViewModel.Title,
-                _addCatalogViewModel.Author,
-                _addCatalogViewModel.NbAvailable
-                );
+            StructuralData.Catalog catalog = new StructuralData.Catalog();
+            catalog.Author = _addCatalogViewModel.Author;
+            catalog.Title = _addCatalogViewModel.Title;
+            catalog.NbAvailable = _addCatalogViewModel.NbAvailable;
             try
             {
-                _library.catalogDictionary.AddCatalog(catalog);
-                _library.Catalog.Add(catalog);
+                _library.catalogDictionary.AddCatalog(new Task1.LibraryData.Catalog(catalog.idCatalog, catalog.Author, catalog.Title, catalog.NbAvailable));
+                _library.Catalog.Add(new Task1.LibraryData.Catalog(catalog.idCatalog, catalog.Author, catalog.Title, catalog.NbAvailable));
+                _library.serviceAPI.addCatalog(catalog.Title, catalog.Author);
                 MessageBox.Show("Catalog added to the library.", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 _catalogViewNavigationService.Navigate();
             }
-            catch(CatalogConflictException)
+            catch(Exception)
             {
                 MessageBox.Show("This catalog is already in the library.", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);

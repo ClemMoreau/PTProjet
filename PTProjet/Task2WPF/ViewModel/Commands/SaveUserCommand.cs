@@ -37,12 +37,9 @@ namespace Task2WPF.Commands
         }
 
         public override void Execute(object? parameter)
-        {
-            User user = new User(
-                _addUserViewModel.Firstname,
-                _addUserViewModel.Lastname);
-            
-            _library.Users.Add(user);
+        {   
+            _library.Users.Add(new User(0, _addUserViewModel.Firstname, _addUserViewModel.Lastname));
+            _library.serviceAPI.addUser(_addUserViewModel.Firstname, _addUserViewModel.Lastname);
             MessageBox.Show("User added to the library.", "Success",
                 MessageBoxButton.OK, MessageBoxImage.Information);
             _userViewNavigationService.Navigate();
