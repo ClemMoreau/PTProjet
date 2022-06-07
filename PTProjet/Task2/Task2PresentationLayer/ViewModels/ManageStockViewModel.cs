@@ -11,7 +11,7 @@ namespace View.ViewModels
     public class ManageStockViewModel : ViewModelBase
     {
         private readonly ObservableCollection<CatalogViewModel> _books;
-        private readonly library _library;
+        private readonly Library _library;
 
         public IEnumerable<CatalogViewModel> Books => _books;
 
@@ -19,7 +19,7 @@ namespace View.ViewModels
         public ICommand AddBookCommand { get; }
         public ICommand DeleteBookCommand { get; }
 
-        public ManageStockViewModel(library library, NavigationStore navigationStore, 
+        public ManageStockViewModel(Library library, NavigationStore navigationStore, 
             Func<AddBookViewModel> createAddBookViewModel, Func<DeleteBookViewModel> createDeleteBookViewModel, NavigationService borrowBookNavigationService)
         {
             _library = library;

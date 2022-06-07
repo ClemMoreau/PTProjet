@@ -66,7 +66,7 @@ namespace View.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public StartingViewModel(library library,NavigationService manageStockViewNavigationService, NavigationService manageBorrowViewNavigationService)
+        public StartingViewModel(Library library,NavigationService manageStockViewNavigationService, NavigationService manageBorrowViewNavigationService)
         {
             SubmitCommand = new MakeEventCommand(this, library, manageBorrowViewNavigationService);
             CancelCommand = new NavigateCommand(manageStockViewNavigationService);

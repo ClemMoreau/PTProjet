@@ -6,13 +6,13 @@ namespace View.ViewModels
     {
         private readonly NavigationStore _navigationStore;
 
-        private readonly library _library;
+        private readonly Library _library;
 
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
         public MainViewModel()
         {
-            _library = new library();
+            _library = new Library();
             _navigationStore = new NavigationStore();
             _navigationStore.CurrentViewModel = CreateStartingViewModel();
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;

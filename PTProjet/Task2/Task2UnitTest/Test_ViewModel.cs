@@ -12,13 +12,13 @@ namespace UnitTest_ProjetTask_2
     public class Test_ViewModel
     {
 
-        public library library;
+        public Library library;
         public NavigationService navigationService;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            library = new library();
+            library = new Library();
             navigationService = new NavigationService(new NavigationStore(), CreateAddBookViewModel);
         }
 
@@ -35,35 +35,35 @@ namespace UnitTest_ProjetTask_2
 
         public void GenerateData_noDuplicate()
         {
-            library.Addperson(new person("John", "Doe"));
-            library.Addperson(new person("Jane", "Doe"));
-            library.Addperson(new person("Jack", "Doe"));
-            library.Addperson(new person("Jill", "Doe"));
-            library.Addperson(new person("Joe", "Doe"));
+            library.Addperson(new View.Model.User("John", "Doe"));
+            library.Addperson(new View.Model.User("Jane", "Doe"));
+            library.Addperson(new View.Model.User("Jack", "Doe"));
+            library.Addperson(new View.Model.User("Jill", "Doe"));
+            library.Addperson(new View.Model.User("Joe", "Doe"));
 
 
-            library.Addstate(new state(new catalog("Victor Hugo", "Les Misérables")));
-            library.Addstate(new state(new catalog("Stendhal", "Le Comte de Monte Cristo")));
-            library.Addstate(new state(new catalog("Shakespeare", "Hamlet")));
+            library.Addstate(new State(new Catalog("Victor Hugo", "Les Misérables")));
+            library.Addstate(new State(new Catalog("Stendhal", "Le Comte de Monte Cristo")));
+            library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
         }
 
         public void GenerateData_Duplicate()
         {
-            library.Addperson(new person("John", "Doe"));
-            library.Addperson(new person("Jane", "Doe"));
-            library.Addperson(new person("Jack", "Doe"));
-            library.Addperson(new person("Jill", "Doe"));
-            library.Addperson(new person("Joe", "Doe"));
+            library.Addperson(new View.Model.User("John", "Doe"));
+            library.Addperson(new View.Model.User("Jane", "Doe"));
+            library.Addperson(new View.Model.User("Jack", "Doe"));
+            library.Addperson(new View.Model.User("Jill", "Doe"));
+            library.Addperson(new View.Model.User("Joe", "Doe"));
 
 
-            library.Addstate(new state(new catalog("Victor Hugo", "Les Misérables")));
-            library.Addstate(new state(new catalog("Victor Hugo", "Les Misérables")));
-            library.Addstate(new state(new catalog("Victor Hugo", "Les Misérables")));
-            library.Addstate(new state(new catalog("Stendhal", "Le Comte de Monte Cristo")));
-            library.Addstate(new state(new catalog("Shakespeare", "Hamlet")));
-            library.Addstate(new state(new catalog("Shakespeare", "Hamlet")));
-            library.Addstate(new state(new catalog("Shakespeare", "Hamlet")));
-            library.Addstate(new state(new catalog("Shakespeare", "Hamlet")));
+            library.Addstate(new State(new Catalog("Victor Hugo", "Les Misérables")));
+            library.Addstate(new State(new Catalog("Victor Hugo", "Les Misérables")));
+            library.Addstate(new State(new Catalog("Victor Hugo", "Les Misérables")));
+            library.Addstate(new State(new Catalog("Stendhal", "Le Comte de Monte Cristo")));
+            library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
+            library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
+            library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
+            library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
         }
 
         //Used for random navigation service for testing purpose

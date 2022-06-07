@@ -10,13 +10,13 @@ namespace View.ViewModels
     public class ManageBorrowViewModel : ViewModelBase
     {
         private readonly ObservableCollection<ActionViewModel> _actions;
-        private readonly library _library;
+        private readonly Library _library;
         
         public IEnumerable<ActionViewModel> Actions => _actions;
         
         public ICommand BorrowReturnCommand { get; }
 
-        public ManageBorrowViewModel(library library, NavigationService borrowViewnavigationService)
+        public ManageBorrowViewModel(Library library, NavigationService borrowViewnavigationService)
         {
             _library = library;
             _actions = new ObservableCollection<ActionViewModel>();

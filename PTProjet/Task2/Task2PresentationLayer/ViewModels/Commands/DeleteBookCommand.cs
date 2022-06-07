@@ -7,10 +7,10 @@ namespace View.ViewModels
     public class DeleteBookCommand : CommandBase
     {
         private readonly DeleteBookViewModel _deleteBookViewModel;
-        private readonly library _library;
+        private readonly Library _library;
         private readonly NavigationService _stockViewnavigationService;
 
-        public DeleteBookCommand(DeleteBookViewModel deleteBookViewModel, library library, NavigationService StockViewnavigationService)
+        public DeleteBookCommand(DeleteBookViewModel deleteBookViewModel, Library library, NavigationService StockViewnavigationService)
         {
             _deleteBookViewModel = deleteBookViewModel;
             _library = library;
@@ -28,7 +28,7 @@ namespace View.ViewModels
 
         public override void Execute(object parameter)
         {
-            catalog catalog;
+            Catalog catalog;
             if (_library.catalogExist(_deleteBookViewModel.Title, _deleteBookViewModel.Author))
             {
                 catalog = _library.GetCatalog(_deleteBookViewModel.Title, _deleteBookViewModel.Author);

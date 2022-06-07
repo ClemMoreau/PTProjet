@@ -121,11 +121,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\action.cs" />
-    <Compile Include="Model\catalog.cs" />
-    <Compile Include="Model\library.cs" />
-    <Compile Include="Model\person.cs" />
-    <Compile Include="Model\state.cs" />
+    <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\Catalog.cs" />
+    <Compile Include="Model\Library.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -152,7 +152,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjetTask_2\ProjetTask_2.csproj">
+    <ProjectReference Include="..\Task2Service_Data_Layers\Task2Service_Data_Layers.csproj">
       <Project>{b3675d2d-763f-463b-aad5-bb0805532946}</Project>
       <Name>ProjetTask_2</Name>
     </ProjectReference>

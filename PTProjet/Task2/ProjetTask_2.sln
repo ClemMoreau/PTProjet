@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetTask_2", "ProjetTask_2\ProjetTask_2.csproj", "{B3675D2D-763F-463B-AAD5-BB0805532946}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2Service_Data_Layers", "Task2Service_Data_Layers\Task2Service_Data_Layers.csproj", "{B3675D2D-763F-463B-AAD5-BB0805532946}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4AA492BD-F1B0-497A-A419-2D793C4C3A81}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.txt = README.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{BE324F2E-3188-47AC-9EBC-CA42710E8DA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2PresentationLayer", "Task2PresentationLayer\Task2PresentationLayer.csproj", "{BE324F2E-3188-47AC-9EBC-CA42710E8DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_ProjetTask_2", "UnitTest_ProjetTask_2\UnitTest_ProjetTask_2.csproj", "{9F9634D2-FADC-4544-9364-03F52E64F6FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2UnitTest", "Task2UnitTest\Task2UnitTest.csproj", "{9F9634D2-FADC-4544-9364-03F52E64F6FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,10 +7,10 @@ namespace View.ViewModels
     public class AddBookCommand : CommandBase
     {
         private readonly AddBookViewModel _addBookViewModel;
-        private readonly library _library;
+        private readonly Library _library;
         private readonly NavigationService _stockViewnavigationService;
 
-        public AddBookCommand(AddBookViewModel addBookViewModel, library library, NavigationService StockViewnavigationService)
+        public AddBookCommand(AddBookViewModel addBookViewModel, Library library, NavigationService StockViewnavigationService)
         {
             _addBookViewModel = addBookViewModel;
             _library = library;
@@ -28,16 +28,16 @@ namespace View.ViewModels
 
         public override void Execute(object parameter)
         {
-            catalog catalog;
+            Catalog catalog;
             if (_library.catalogExist(_addBookViewModel.Title, _addBookViewModel.Author))
             {
                 catalog = _library.GetCatalog(_addBookViewModel.Title, _addBookViewModel.Author);
                 
             } else
             {
-                catalog = new catalog(_addBookViewModel.Title, _addBookViewModel.Author);            
+                catalog = new Catalog(_addBookViewModel.Title, _addBookViewModel.Author);            
             }
-            _library.Addstate(new state(catalog));
+            _library.Addstate(new State(catalog));
             MessageBox.Show("Book successfully added", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             _stockViewnavigationService.Navigate();

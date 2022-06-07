@@ -1,11 +1,11 @@
 ﻿namespace View.Model
 {
-    public class person
+    public class User
     {
         public string name { get; set; }
         public string surname { get; set; }
 
-        public person(string name, string surname)
+        public User(string name, string surname)
         {
             this.name = name;
             this.surname = surname;
@@ -22,7 +22,7 @@
                 return false;
             if (obj.GetType() != this.GetType())
                 return false;
-            person p = (person)obj;
+            User p = (User)obj;
             return (this.name == p.name && this.surname == p.surname);
         }
 

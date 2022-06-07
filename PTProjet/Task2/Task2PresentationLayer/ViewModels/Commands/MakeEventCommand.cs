@@ -7,10 +7,10 @@ namespace View.Commands
     public class MakeEventCommand : CommandBase
     {
         private readonly StartingViewModel _startingViewModel;
-        private readonly library _library;
+        private readonly Library _library;
         private readonly NavigationService _borrowViewnavigationService;
 
-        public MakeEventCommand(StartingViewModel startingViewModel, library library, NavigationService borrowViewnavigationService)
+        public MakeEventCommand(StartingViewModel startingViewModel, Library library, NavigationService borrowViewnavigationService)
         {
             _startingViewModel = startingViewModel;
             _library = library;
@@ -30,12 +30,12 @@ namespace View.Commands
 
         public override void Execute(object parameter)
         {
-            person user;
+            User user;
             if(_library.ExistCustomer(_startingViewModel.Name, _startingViewModel.Surname)){
                 user = _library.GetCustomersByName(_startingViewModel.Name, _startingViewModel.Surname);
             } else
             {
-                 user = new person(_startingViewModel.Name, _startingViewModel.Surname);
+                 user = new User(_startingViewModel.Name, _startingViewModel.Surname);
                 _library.Addperson(user);
             }
             _library.NewAction(_startingViewModel.Title, _startingViewModel.Author, user, _startingViewModel.Description);

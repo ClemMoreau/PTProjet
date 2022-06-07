@@ -244,11 +244,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Presentation\Presentation.csproj">
+    <ProjectReference Include="..\Task2PresentationLayer\Task2PresentationLayer.csproj">
       <Project>{be324f2e-3188-47ac-9ebc-ca42710e8da9}</Project>
       <Name>Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProjetTask_2\ProjetTask_2.csproj">
+    <ProjectReference Include="..\Task2Service_Data_Layers\Task2Service_Data_Layers.csproj">
       <Project>{b3675d2d-763f-463b-aad5-bb0805532946}</Project>
       <Name>ProjetTask_2</Name>
     </ProjectReference>

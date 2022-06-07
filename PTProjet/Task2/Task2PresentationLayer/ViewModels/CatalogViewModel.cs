@@ -4,12 +4,12 @@ namespace View.ViewModels
 {
     public class CatalogViewModel : ViewModelBase
     {
-        private readonly catalog _catalog;
+        private readonly Catalog _catalog;
 
         public string title => _catalog.title;
         public string author => _catalog.author;
 
-        public CatalogViewModel(catalog book)
+        public CatalogViewModel(Catalog book)
         {
             _catalog = book;
         }

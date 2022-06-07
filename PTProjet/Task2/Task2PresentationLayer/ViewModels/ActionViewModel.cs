@@ -4,7 +4,7 @@ namespace View.ViewModels
 {
     public class ActionViewModel : ViewModelBase
     {
-        private readonly action _action;
+        private readonly Event _action;
 
         public string title => _action.book.catalog.title;
         public string author => _action.book.catalog.author;
@@ -12,7 +12,7 @@ namespace View.ViewModels
         public string surname => _action.user.surname;
         public string description => _action.description;
 
-        public ActionViewModel(action actionEvent)
+        public ActionViewModel(Event actionEvent)
         {
             _action = actionEvent;
         }

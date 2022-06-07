@@ -10,19 +10,19 @@ namespace ProjetTask_2.DataLayer
     {
         private DataContext dataContext = new DataContext();
 
-        private List<catalog> catalogs = new List<catalog>();
-        private List<state> states = new List<state>();
-        private List<person> users = new List<person>();
-        private List<action> events = new List<action>();
+        private List<Catalog> catalogs = new List<Catalog>();
+        private List<State> states = new List<State>();
+        private List<User> users = new List<User>();
+        private List<Event> events = new List<Event>();
 
         public AbstractDataAPI()
         {
-            catalogs = dataContext.GetTable<catalog>().ToList();
-            users = dataContext.GetTable<person>().ToList();
-            events = dataContext.GetTable<action>().ToList();
-            states = dataContext.GetTable<state>().ToList();
+            catalogs = dataContext.GetTable<Catalog>().ToList();
+            users = dataContext.GetTable<User>().ToList();
+            events = dataContext.GetTable<Event>().ToList();
+            states = dataContext.GetTable<State>().ToList();
 
-            dataContext.catalog.InsertOnSubmit(new catalog() { title = "coucoujetest", author = "jesperequecamarche" });
+            dataContext.Catalog.InsertOnSubmit(new Catalog() { title = "coucoujetest", author = "jesperequecamarche" });
             dataContext.SubmitChanges();
         }
 
@@ -34,7 +34,7 @@ namespace ProjetTask_2.DataLayer
         /*Search a catalog id by its title and author*/
         private int searchCatalog(string title, string author)
         {
-            foreach (catalog c in catalogs)
+            foreach (Catalog c in catalogs)
             {
                 if (c.title == title && c.author == author)
                 {
@@ -43,7 +43,7 @@ namespace ProjetTask_2.DataLayer
             }
             return -1;
         }
-        private state SearchBook(string title, string author, bool available)
+        private State SearchBook(string title, string author, bool available)
         {
             int truefalse;
             if (available)
@@ -58,7 +58,7 @@ namespace ProjetTask_2.DataLayer
             int id = searchCatalog(title, author);
 
             //If there is several copies of the book, there is several state in the list
-            Predicate<state> predicate = x => x.book == id && x.available == truefalse;
+            Predicate<State> predicate = x => x.book == id && x.available == truefalse;
             if (states.Exists(predicate))
             {
                 return states.Find(predicate);
@@ -68,10 +68,10 @@ namespace ProjetTask_2.DataLayer
                 return null;
             }
         }
-        private person SearchUser(string Name, string Surname)
+        private User SearchUser(string Name, string Surname)
         {
             //We suppose that there is only one user with the same name and surname
-            Predicate<person> predicate = x => x.name == Name && x.surname == Surname;
+            Predicate<User> predicate = x => x.name == Name && x.surname == Surname;
             if (users.Exists(predicate))
             {
                 return users.Find(predicate);
@@ -85,15 +85,15 @@ namespace ProjetTask_2.DataLayer
 
         public void newBorrow(String Title, String Author, String Name, String Surname)
         {
-            state state = SearchBook(Title, Author, true);
+            State state = SearchBook(Title, Author, true);
             if (state != null)
             {
-                person User = SearchUser(Name, Surname);
+                User User = SearchUser(Name, Surname);
                 if (User != null)
                 {
-                    dataContext.action.InsertOnSubmit(new action { stateId = state.id, personId = User.id, description = "Borrow" });
+                    dataContext.Event.InsertOnSubmit(new Event { stateId = state.id, personId = User.id, description = "Borrow" });
                     dataContext.SubmitChanges();
-                    events = dataContext.GetTable<action>().ToList();
+                    events = dataContext.GetTable<Event>().ToList();
                 }
                 else
                 {
@@ -107,19 +107,19 @@ namespace ProjetTask_2.DataLayer
         }
         public void newReturn(String Title, String Author, String Name, String Surname)
         {
-            person User = SearchUser(Name, Surname);
+            User User = SearchUser(Name, Surname);
             if (User == null)
             {
                 throw new ArgumentException("User not found");
             }
             else
             {
-                state state = SearchBook(Title, Author, false);
+                State state = SearchBook(Title, Author, false);
                 if (state != null)
                 {
-                    dataContext.action.InsertOnSubmit(new action { stateId = state.id, personId = User.id, description = "Return" });
+                    dataContext.Event.InsertOnSubmit(new Event { stateId = state.id, personId = User.id, description = "Return" });
                     dataContext.SubmitChanges();
-                    events = dataContext.GetTable<action>().ToList();
+                    events = dataContext.GetTable<Event>().ToList();
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace ProjetTask_2.DataLayer
         }
         public void newChangeAvailabilityState(String Title, String Author, bool avail)
         {
-            state state = SearchBook(Title, Author, avail);
+            State state = SearchBook(Title, Author, avail);
             if (state != null)
             {
                 state.available = (avail ? 0 : 1);
@@ -146,17 +146,17 @@ namespace ProjetTask_2.DataLayer
 
             if (id == -1)
             {
-                dataContext.catalog.InsertOnSubmit(new catalog { title = Title, author = Author });
+                dataContext.Catalog.InsertOnSubmit(new Catalog { title = Title, author = Author });
                 dataContext.SubmitChanges();
-                catalogs = dataContext.GetTable<catalog>().ToList();
+                catalogs = dataContext.GetTable<Catalog>().ToList();
                 id = searchCatalog(Title, Author);
             }
 
             for (int i = 0; i < Quantity; i++)
             {
-                dataContext.state.InsertOnSubmit(new state { book = id, available = 1 });
+                dataContext.State.InsertOnSubmit(new State { book = id, available = 1 });
                 dataContext.SubmitChanges();
-                states = dataContext.GetTable<state>().ToList();
+                states = dataContext.GetTable<State>().ToList();
 
             }
 
@@ -164,8 +164,8 @@ namespace ProjetTask_2.DataLayer
         public void newDeleteBook(String Title, String Author)
         {
             int id = searchCatalog(Title, Author);
-            Predicate<catalog> Predicate = x => x.id == id;
-            catalog catalog;
+            Predicate<Catalog> Predicate = x => x.id == id;
+            Catalog catalog;
             if (catalogs.Exists(Predicate))
             {
                 catalog = catalogs.Find(Predicate);
@@ -175,25 +175,25 @@ namespace ProjetTask_2.DataLayer
                 throw new ArgumentException("Book not found");
             }
 
-            Predicate<state> predicate = x => x.id == catalog.id;
+            Predicate<State> predicate = x => x.id == catalog.id;
 
             if (states.Exists(predicate))
             {
-                foreach (state s in states.FindAll(predicate))
+                foreach (State s in states.FindAll(predicate))
                 {
-                    dataContext.state.DeleteOnSubmit(s);
+                    dataContext.State.DeleteOnSubmit(s);
                 }
             }
-            dataContext.catalog.DeleteOnSubmit(catalog);
+            dataContext.Catalog.DeleteOnSubmit(catalog);
             dataContext.SubmitChanges();
-            catalogs = dataContext.GetTable<catalog>().ToList();
+            catalogs = dataContext.GetTable<Catalog>().ToList();
 
         }
         public void newAddUser(String Name, String Surname)
         {
-            dataContext.person.InsertOnSubmit(new person { name = Name, surname = Surname });
+            dataContext.User.InsertOnSubmit(new User { name = Name, surname = Surname });
             dataContext.SubmitChanges();
-            users = dataContext.GetTable<person>().ToList();
+            users = dataContext.GetTable<User>().ToList();
         }
         public int newGetNbUser()
         {
@@ -205,7 +205,7 @@ namespace ProjetTask_2.DataLayer
         }
         public bool newGetAvailability(String Author, String Title)
         {
-            state state = SearchBook(Title, Author, true);
+            State state = SearchBook(Title, Author, true);
             if (state != null)
             {
                 return true;

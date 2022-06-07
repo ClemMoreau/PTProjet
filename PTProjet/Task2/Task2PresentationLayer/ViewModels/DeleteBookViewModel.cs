@@ -3,9 +3,9 @@ using View.Model;
 
 namespace View.ViewModels
 {
-    //Add a book to the catalog
+    //Delete Book from the catalog
     //with a button to submit and a button to go back to catalog
-    public class AddBookViewModel : ViewModelBase
+    public class DeleteBookViewModel : ViewModelBase
     {
         private string _title;
         public string Title
@@ -32,9 +32,9 @@ namespace View.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public AddBookViewModel(library library, NavigationService borrowViewnavigationService)
+        public DeleteBookViewModel(Library library, NavigationService borrowViewnavigationService)
         {
-            SubmitCommand = new AddBookCommand(this, library, borrowViewnavigationService);
+            SubmitCommand = new DeleteBookCommand(this, library, borrowViewnavigationService);
             CancelCommand = new NavigateCommand(borrowViewnavigationService);
         }
 

@@ -30,21 +30,21 @@ namespace ProjetTask_2.DataLayer
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnCreated();
-    partial void Insertcatalog(catalog instance);
-    partial void Updatecatalog(catalog instance);
-    partial void Deletecatalog(catalog instance);
-    partial void Insertperson(person instance);
-    partial void Updateperson(person instance);
-    partial void Deleteperson(person instance);
-    partial void Insertaction(action instance);
-    partial void Updateaction(action instance);
-    partial void Deleteaction(action instance);
-    partial void Insertstate(state instance);
-    partial void Updatestate(state instance);
-    partial void Deletestate(state instance);
-        #endregion
-
-        public DataContext() : 
+    partial void InsertCatalog(Catalog instance);
+    partial void UpdateCatalog(Catalog instance);
+    partial void DeleteCatalog(Catalog instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
+    partial void InsertEvent(Event instance);
+    partial void UpdateEvent(Event instance);
+    partial void DeleteEvent(Event instance);
+    partial void InsertState(State instance);
+    partial void UpdateState(State instance);
+    partial void DeleteState(State instance);
+    #endregion
+		
+		public DataContext() : 
 				base(global::ProjetTask_2.Properties.Settings.Default.Programming_TechnologiesConnectionString, mappingSource)
 		{
 			OnCreated();
@@ -74,41 +74,41 @@ namespace ProjetTask_2.DataLayer
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<catalog> catalog
+		public System.Data.Linq.Table<Catalog> Catalog
 		{
 			get
 			{
-				return this.GetTable<catalog>();
+				return this.GetTable<Catalog>();
 			}
 		}
 		
-		public System.Data.Linq.Table<person> person
+		public System.Data.Linq.Table<User> User
 		{
 			get
 			{
-				return this.GetTable<person>();
+				return this.GetTable<User>();
 			}
 		}
 		
-		public System.Data.Linq.Table<action> action
+		public System.Data.Linq.Table<Event> Event
 		{
 			get
 			{
-				return this.GetTable<action>();
+				return this.GetTable<Event>();
 			}
 		}
 		
-		public System.Data.Linq.Table<state> state
+		public System.Data.Linq.Table<State> State
 		{
 			get
 			{
-				return this.GetTable<state>();
+				return this.GetTable<State>();
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.catalog")]
-	public partial class catalog : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Catalog : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -119,7 +119,7 @@ namespace ProjetTask_2.DataLayer
 		
 		private string _title;
 		
-		private EntitySet<state> _state;
+		private EntitySet<State> _state;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -133,9 +133,9 @@ namespace ProjetTask_2.DataLayer
     partial void OntitleChanged();
     #endregion
 		
-		public catalog()
+		public Catalog()
 		{
-			this._state = new EntitySet<state>(new Action<state>(this.attach_state), new Action<state>(this.detach_state));
+			this._state = new EntitySet<State>(new Action<State>(this.attach_state), new Action<State>(this.detach_state));
 			OnCreated();
 		}
 		
@@ -200,7 +200,7 @@ namespace ProjetTask_2.DataLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="catalog_state", Storage="_state", ThisKey="id", OtherKey="book")]
-		public EntitySet<state> state
+		public EntitySet<State> State
 		{
 			get
 			{
@@ -232,21 +232,21 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		private void attach_state(state entity)
+		private void attach_state(State entity)
 		{
 			this.SendPropertyChanging();
-			entity.catalog = this;
+			entity.Catalog = this;
 		}
 		
-		private void detach_state(state entity)
+		private void detach_state(State entity)
 		{
 			this.SendPropertyChanging();
-			entity.catalog = null;
+			entity.Catalog = null;
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.person")]
-	public partial class person : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -257,7 +257,7 @@ namespace ProjetTask_2.DataLayer
 		
 		private string _surname;
 		
-		private EntitySet<action> _action;
+		private EntitySet<Event> _action;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -271,9 +271,9 @@ namespace ProjetTask_2.DataLayer
     partial void OnsurnameChanged();
     #endregion
 		
-		public person()
+		public User()
 		{
-			this._action = new EntitySet<action>(new Action<action>(this.attach_action), new Action<action>(this.detach_action));
+			this._action = new EntitySet<Event>(new Action<Event>(this.attach_action), new Action<Event>(this.detach_action));
 			OnCreated();
 		}
 		
@@ -338,7 +338,7 @@ namespace ProjetTask_2.DataLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="person_action", Storage="_action", ThisKey="id", OtherKey="personId")]
-		public EntitySet<action> action
+		public EntitySet<Event> Event
 		{
 			get
 			{
@@ -370,21 +370,21 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		private void attach_action(action entity)
+		private void attach_action(Event entity)
 		{
 			this.SendPropertyChanging();
-			entity.person = this;
+			entity.User = this;
 		}
 		
-		private void detach_action(action entity)
+		private void detach_action(Event entity)
 		{
 			this.SendPropertyChanging();
-			entity.person = null;
+			entity.User = null;
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.action")]
-	public partial class action : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -397,9 +397,9 @@ namespace ProjetTask_2.DataLayer
 		
 		private int _personId;
 		
-		private EntityRef<person> _person;
+		private EntityRef<User> _person;
 		
-		private EntityRef<state> _state;
+		private EntityRef<State> _state;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -415,10 +415,10 @@ namespace ProjetTask_2.DataLayer
     partial void OnpersonIdChanged();
     #endregion
 		
-		public action()
+		public Event()
 		{
-			this._person = default(EntityRef<person>);
-			this._state = default(EntityRef<state>);
+			this._person = default(EntityRef<User>);
+			this._state = default(EntityRef<State>);
 			OnCreated();
 		}
 		
@@ -511,7 +511,7 @@ namespace ProjetTask_2.DataLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="person_action", Storage="_person", ThisKey="personId", OtherKey="id", IsForeignKey=true)]
-		public person person
+		public User User
 		{
 			get
 			{
@@ -519,7 +519,7 @@ namespace ProjetTask_2.DataLayer
 			}
 			set
 			{
-				person previousValue = this._person.Entity;
+				User previousValue = this._person.Entity;
 				if (((previousValue != value) 
 							|| (this._person.HasLoadedOrAssignedValue == false)))
 				{
@@ -527,25 +527,25 @@ namespace ProjetTask_2.DataLayer
 					if ((previousValue != null))
 					{
 						this._person.Entity = null;
-						previousValue.action.Remove(this);
+						previousValue.Event.Remove(this);
 					}
 					this._person.Entity = value;
 					if ((value != null))
 					{
-						value.action.Add(this);
+						value.Event.Add(this);
 						this._personId = value.id;
 					}
 					else
 					{
 						this._personId = default(int);
 					}
-					this.SendPropertyChanged("person");
+					this.SendPropertyChanged("User");
 				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="state_action", Storage="_state", ThisKey="stateId", OtherKey="id", IsForeignKey=true)]
-		public state state
+		public State State
 		{
 			get
 			{
@@ -553,7 +553,7 @@ namespace ProjetTask_2.DataLayer
 			}
 			set
 			{
-				state previousValue = this._state.Entity;
+				State previousValue = this._state.Entity;
 				if (((previousValue != value) 
 							|| (this._state.HasLoadedOrAssignedValue == false)))
 				{
@@ -561,19 +561,19 @@ namespace ProjetTask_2.DataLayer
 					if ((previousValue != null))
 					{
 						this._state.Entity = null;
-						previousValue.action.Remove(this);
+						previousValue.Event.Remove(this);
 					}
 					this._state.Entity = value;
 					if ((value != null))
 					{
-						value.action.Add(this);
+						value.Event.Add(this);
 						this._stateId = value.id;
 					}
 					else
 					{
 						this._stateId = default(int);
 					}
-					this.SendPropertyChanged("state");
+					this.SendPropertyChanged("State");
 				}
 			}
 		}
@@ -600,7 +600,7 @@ namespace ProjetTask_2.DataLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.state")]
-	public partial class state : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class State : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -611,9 +611,9 @@ namespace ProjetTask_2.DataLayer
 		
 		private int _available;
 		
-		private EntitySet<action> _action;
+		private EntitySet<Event> _action;
 		
-		private EntityRef<catalog> _catalog;
+		private EntityRef<Catalog> _catalog;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -627,12 +627,11 @@ namespace ProjetTask_2.DataLayer
     partial void OnavailableChanged();
     #endregion
 		
-		public state()
+		public State()
 		{
-			this._action = new EntitySet<action>(new Action<action>(this.attach_action), new Action<action>(this.detach_action));
-			this._catalog = default(EntityRef<catalog>);
-            this._available = 1;
-            OnCreated();
+			this._action = new EntitySet<Event>(new Action<Event>(this.attach_action), new Action<Event>(this.detach_action));
+			this._catalog = default(EntityRef<Catalog>);
+			OnCreated();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
@@ -700,7 +699,7 @@ namespace ProjetTask_2.DataLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="state_action", Storage="_action", ThisKey="id", OtherKey="stateId")]
-		public EntitySet<action> action
+		public EntitySet<Event> Event
 		{
 			get
 			{
@@ -713,7 +712,7 @@ namespace ProjetTask_2.DataLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="catalog_state", Storage="_catalog", ThisKey="book", OtherKey="id", IsForeignKey=true)]
-		public catalog catalog
+		public Catalog Catalog
 		{
 			get
 			{
@@ -721,7 +720,7 @@ namespace ProjetTask_2.DataLayer
 			}
 			set
 			{
-				catalog previousValue = this._catalog.Entity;
+				Catalog previousValue = this._catalog.Entity;
 				if (((previousValue != value) 
 							|| (this._catalog.HasLoadedOrAssignedValue == false)))
 				{
@@ -729,19 +728,19 @@ namespace ProjetTask_2.DataLayer
 					if ((previousValue != null))
 					{
 						this._catalog.Entity = null;
-						previousValue.state.Remove(this);
+						previousValue.State.Remove(this);
 					}
 					this._catalog.Entity = value;
 					if ((value != null))
 					{
-						value.state.Add(this);
+						value.State.Add(this);
 						this._book = value.id;
 					}
 					else
 					{
 						this._book = default(int);
 					}
-					this.SendPropertyChanged("catalog");
+					this.SendPropertyChanged("Catalog");
 				}
 			}
 		}
@@ -766,16 +765,16 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		private void attach_action(action entity)
+		private void attach_action(Event entity)
 		{
 			this.SendPropertyChanging();
-			entity.state = this;
+			entity.State = this;
 		}
 		
-		private void detach_action(action entity)
+		private void detach_action(Event entity)
 		{
 			this.SendPropertyChanging();
-			entity.state = null;
+			entity.State = null;
 		}
 	}
 }
