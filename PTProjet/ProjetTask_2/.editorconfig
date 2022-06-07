@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# CS8618: Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
+dotnet_diagnostic.CS8618.severity = none
+
+# CS8622: La nullabilité des types référence dans le type du paramètre ne correspond pas au délégué cible (probablement en raison des attributs de nullabilité).
+dotnet_diagnostic.CS8622.severity = none
+
+# CS8765: La nullabilité de type du paramètre ne correspond pas au membre substitué (probablement en raison des attributs de nullabilité).
+dotnet_diagnostic.CS8765.severity = none

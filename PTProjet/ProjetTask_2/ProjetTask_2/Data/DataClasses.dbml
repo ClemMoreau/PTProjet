@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Programming_Technologies" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PC-AURANE;Initial Catalog=Programming_Technologies;Integrated Security=True" SettingsObjectName="ProjetTask_2.Properties.Settings" SettingsPropertyName="Programming_TechnologiesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.catalog" Member="catalog">
+    <Type Name="catalog">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="author" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="catalog_state" Member="state" ThisKey="id" OtherKey="book" Type="state" />
+    </Type>
+  </Table>
+  <Table Name="dbo.person" Member="person">
+    <Type Name="person">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="person_action" Member="action" ThisKey="id" OtherKey="personId" Type="action" />
+    </Type>
+  </Table>
+  <Table Name="dbo.action" Member="action">
+    <Type Name="action">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="stateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="personId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="person_action" Member="person" ThisKey="personId" OtherKey="id" Type="person" IsForeignKey="true" />
+      <Association Name="state_action" Member="state" ThisKey="stateId" OtherKey="id" Type="state" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.state" Member="state">
+    <Type Name="state">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="book" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="available" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="state_action" Member="action" ThisKey="id" OtherKey="stateId" Type="action" />
+      <Association Name="catalog_state" Member="catalog" ThisKey="book" OtherKey="id" Type="catalog" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

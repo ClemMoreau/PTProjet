@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="View.Views.StartingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Grid.IsSharedSizeScope="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Borrow or Return a Book" FontSize="24" Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="0 15 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn"/>
+                <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Name" Grid.Row="0" Grid.Column="0" Margin="0 5 0 0"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Margin=" 0 5 0 0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="Surname" Grid.Row="0" Grid.Column="1" Margin="20 5 0 0" Width="150"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="20 5 0 0" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0 10 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn"/>
+                <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Title" Grid.Row="0" Grid.Column="0" Margin="0 5 0 0" Width="150"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Margin=" 0 5 0 0" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="Author" Grid.Row="0" Grid.Column="1" Margin="20 5 0 0"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="20 5 0 0" Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0 15 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Grid.Column="0" SelectedIndex="0" Text="{Binding Description}">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Borrow"/>
+                    <ComboBoxItem Content="Return"/>
+                </ComboBox.Items>
+            </ComboBox>
+        </Grid>
+        
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 25 0 0" >
+            <Button Content="Submit" Margin="0 5 0 0" Command="{Binding SubmitCommand}"/>
+            <Button Content="Cancel" Margin="20 5 0 0" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>
