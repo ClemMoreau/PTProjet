@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetTask_2.DataLayer
+namespace ProjetTask_2.Data
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -199,7 +199,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="catalog_state", Storage="_state", ThisKey="id", OtherKey="book")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalog_State", Storage="_state", ThisKey="id", OtherKey="book")]
 		public EntitySet<State> State
 		{
 			get
@@ -337,7 +337,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="person_action", Storage="_action", ThisKey="id", OtherKey="personId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Event", Storage="_action", ThisKey="id", OtherKey="personId")]
 		public EntitySet<Event> Event
 		{
 			get
@@ -510,7 +510,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="person_action", Storage="_person", ThisKey="personId", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Event", Storage="_person", ThisKey="personId", OtherKey="id", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -544,7 +544,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="state_action", Storage="_state", ThisKey="stateId", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_Event", Storage="_state", ThisKey="stateId", OtherKey="id", IsForeignKey=true)]
 		public State State
 		{
 			get
@@ -698,7 +698,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="state_action", Storage="_action", ThisKey="id", OtherKey="stateId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_Event", Storage="_action", ThisKey="id", OtherKey="stateId")]
 		public EntitySet<Event> Event
 		{
 			get
@@ -711,7 +711,7 @@ namespace ProjetTask_2.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="catalog_state", Storage="_catalog", ThisKey="book", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Catalog_State", Storage="_catalog", ThisKey="book", OtherKey="id", IsForeignKey=true)]
 		public Catalog Catalog
 		{
 			get

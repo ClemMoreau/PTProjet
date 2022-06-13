@@ -26,8 +26,8 @@ namespace ProjetTask_2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC-AURANE;Initial Catalog=Programming_Technologies;Integrated Securit" +
-            "y=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC-JEAN;Initial Catalog=Programming_Technologies;Integrated Security=" +
+            "True")]
         public string Programming_TechnologiesConnectionString {
             get {
                 return ((string)(this["Programming_TechnologiesConnectionString"]));

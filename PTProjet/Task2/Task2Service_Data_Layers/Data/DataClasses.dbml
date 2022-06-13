@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Programming_Technologies" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PC-AURANE;Initial Catalog=Programming_Technologies;Integrated Security=True" SettingsObjectName="ProjetTask_2.Properties.Settings" SettingsPropertyName="Programming_TechnologiesConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PC-JEAN;Initial Catalog=Programming_Technologies;Integrated Security=True" SettingsObjectName="ProjetTask_2.Properties.Settings" SettingsPropertyName="Programming_TechnologiesConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.catalog" Member="Catalog">
     <Type Name="Catalog">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

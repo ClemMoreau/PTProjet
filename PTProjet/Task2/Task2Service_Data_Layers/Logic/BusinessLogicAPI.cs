@@ -1,4 +1,5 @@
-﻿using ProjetTask_2.DataLayer;
+﻿using ProjetTask_2.Data;
+using ProjetTask_2.DataLayer;
 
 namespace ProjetTask_2.LogicLayer
 {

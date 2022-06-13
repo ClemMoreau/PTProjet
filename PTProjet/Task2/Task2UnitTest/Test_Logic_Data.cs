@@ -24,7 +24,7 @@ namespace UnitTest_ProjetTask_2
         [TestCleanup]
         public void Cleanup()
         {
-            string sqlConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Programming_Technologies;Data Source=PC-AURANE";
+            string sqlConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Programming_Technologies;Data Source=PC-JEAN";
             string script = File.ReadAllText("../../TestCleanup.sql");
             SqlConnection conn = new SqlConnection(sqlConnectionString);
             Server server = new Server(new ServerConnection(conn));
