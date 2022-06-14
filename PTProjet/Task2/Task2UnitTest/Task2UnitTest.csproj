@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAPI.cs" />
+    <Compile Include="TestLibrary.cs" />
     <Compile Include="Test_ViewModel.cs" />
     <Compile Include="Test_Logic_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

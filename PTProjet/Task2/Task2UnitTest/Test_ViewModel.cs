@@ -12,25 +12,13 @@ namespace UnitTest_ProjetTask_2
     public class Test_ViewModel
     {
 
-        public Library library;
+        public TestLibrary library;
         public NavigationService navigationService;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            library = new Library();
-            navigationService = new NavigationService(new NavigationStore(), CreateAddBookViewModel);
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            string sqlConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Programming_Technologies;Data Source=PC-JEAN";
-            string script = File.ReadAllText("../../TestCleanup.sql");
-            SqlConnection conn = new SqlConnection(sqlConnectionString);
-            Server server = new Server(new ServerConnection(conn));
-
-            server.ConnectionContext.ExecuteNonQuery(script);
+            library = new TestLibrary();
         }
 
         public void GenerateData_noDuplicate()
@@ -66,43 +54,41 @@ namespace UnitTest_ProjetTask_2
             library.Addstate(new State(new Catalog("Shakespeare", "Hamlet")));
         }
 
-        //Used for random navigation service for testing purpose
-        private AddBookViewModel CreateAddBookViewModel()
-        {
-            return new AddBookViewModel(library, navigationService);
-        }
-
 
         [TestMethod]
         public void Should_have_the_correct_number_into_db()
         {
             GenerateData_noDuplicate();
-            Assert.AreEqual(5, library.businessLogicAPI.dataAPI.newGetNbUser());
-
-            DeleteBookViewModel viewmodel = new DeleteBookViewModel(library, navigationService);
-            Assert.IsFalse(viewmodel.SubmitCommand.CanExecute(null));
+            int nbUser = 0;
+            foreach(View.Model.User user in library.GetCustomers())
+            {
+                nbUser++;
+            }
+            Assert.AreEqual(5, nbUser);
         }
 
         [TestMethod]
         public void CanExecutre_should_be_false()
         {
             GenerateData_Duplicate();
-            Assert.AreEqual(5, library.businessLogicAPI.dataAPI.newGetNbUser());
-
-            AddBookViewModel viewmodel = new AddBookViewModel(library, navigationService);
-            Assert.IsFalse(viewmodel.SubmitCommand.CanExecute(null));
+            int nbBook = 0;
+            foreach (View.Model.State state in library.GetStates())
+            {
+                nbBook++;
+            }
+            Assert.AreEqual(8, nbBook);
         }
 
         [TestMethod]
         public void CanExecute_should_be_true()
         {
             GenerateData_noDuplicate();
-            Assert.AreEqual(5, library.businessLogicAPI.dataAPI.newGetNbUser());
-
-            DeleteBookViewModel viewmodel = new DeleteBookViewModel(library, navigationService);
-            viewmodel.Author = "Victor Hugo";
-            viewmodel.Title = "Les Misérables";
-            Assert.IsTrue(viewmodel.SubmitCommand.CanExecute(null));
+            int nbEvent = 0;
+            foreach (State book in library.GetStates())
+            {
+                nbEvent++;
+            }
+            Assert.AreEqual(3, nbEvent);
         }
 
     }
